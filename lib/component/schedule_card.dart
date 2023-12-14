@@ -26,7 +26,11 @@ class ScheduleCard extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: IntrinsicHeight( //높이를 내부 위젯들의 최대 높이로 설정
+        child: IntrinsicHeight(
+          //높이를 내부 위젯들의 최대 높이로 설정
+          //_Time위젯은 Column위젯을 사용중이기 때문에 ScheduleCard 위젯의 최대 크기만큼 높이를 차지하지만
+          //_Content 위젯은 Column 위젯을 사용하지 않기 때문에 최소 크기만 차지하며 세로로 가운데정렬이 되는데
+          //이럴 때 _Time위젯과 _Content위젯의 높이를 똑같이 맞춰주려면 IntrinsicHeight 위젯을 사용해 최대 크기를 차지하는 위젯만큼 다른 위젯들 크기를 동일하게 맞춤
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -81,7 +85,7 @@ class _Time extends StatelessWidget {
           style: textStyle.copyWith(
             fontSize: 10.0,
          ),
-        )
+        ),
       ],
     );
   }
